@@ -9,33 +9,32 @@
         body { background-color: #0d1117; color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; min-height: 100vh; overflow-y: auto; }
         .container { width: 100%; max-width: 480px; text-align: center; padding-bottom: 50px; position: relative; }
         
-        /* মিউট বাটন স্টাইল */
         #muteBtn { position: absolute; top: 10px; right: 0; z-index: 1000; padding: 8px 12px; background: rgba(0, 242, 254, 0.1); color: #00f2fe; border: 1px solid #00f2fe; border-radius: 20px; cursor: pointer; font-size: 12px; }
 
         .profile-section { margin-top: 20px; margin-bottom: 25px; }
         .profile-img { width: 90px; height: 90px; border-radius: 50%; border: 2px solid #00f2fe; box-shadow: 0 0 15px rgba(0, 242, 254, 0.3); object-fit: cover; }
         .profile-name { font-size: 20px; font-weight: 600; margin-top: 10px; color: #fff; }
+        .tg-logo { width: 18px; height: 18px; vertical-align: middle; margin-right: 5px; }
+        
+        .social-links { display: flex; justify-content: center; gap: 15px; margin-top: 15px; margin-bottom: 10px; }
+        .social-icon { color: #fff; font-size: 24px; text-decoration: none; transition: 0.3s; }
+        .social-icon:hover { color: #00f2fe; }
+
         .ad-box { width: 100%; margin: 20px 0; min-height: 100px; display: flex; justify-content: center; align-items: center; }
         .btn-telegram { display: block; width: 100%; padding: 14px; background: linear-gradient(135deg, #0088cc, #00a2ed); color: white; text-decoration: none; border-radius: 12px; font-weight: bold; font-size: 16px; box-shadow: 0 4px 15px rgba(0, 136, 204, 0.4); transition: 0.3s; margin-bottom: 30px; }
-        .btn-telegram:active { transform: scale(0.98); }
+        
         .image-showcase { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 15px; margin-top: 25px; }
         .section-title { font-size: 16px; color: #00f2fe; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
         .image-grid { display: flex; justify-content: space-between; gap: 12px; }
         .img-box { flex: 1; text-align: center; max-width: 48%; }
-        .img-box h4 { font-size: 13px; margin-bottom: 8px; font-weight: 500; }
-        .img-box .label-orig { color: #aaa; }
-        .img-box .label-edit { color: #00f2fe; }
         .display-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.1); }
         .border-edit { border: 1.5px solid #00f2fe; box-shadow: 0 0 10px rgba(0, 242, 254, 0.2); }
-        .btn-prompt { display: inline-block; margin-top: 15px; padding: 8px 16px; background: rgba(0, 242, 254, 0.1); color: #00f2fe; border: 1px solid #00f2fe; border-radius: 20px; font-size: 13px; cursor: pointer; font-weight: 500; transition: 0.2s; }
-        .btn-prompt:hover { background: #00f2fe; color: #0d1117; }
+        .btn-prompt { display: inline-block; margin-top: 15px; padding: 8px 16px; background: rgba(0, 242, 254, 0.1); color: #00f2fe; border: 1px solid #00f2fe; border-radius: 20px; font-size: 13px; cursor: pointer; }
         
         .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { background-color: #161b22; border: 1px solid #30363d; padding: 20px; border-radius: 16px; max-width: 400px; width: 100%; max-height: 85vh; display: flex; flex-direction: column; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-        .close-btn { position: absolute; right: 15px; top: 10px; color: #aaa; font-size: 24px; cursor: pointer; z-index: 10; }
-        .prompt-text { background: #0d1117; padding: 12px; border-radius: 8px; border: 1px solid #30363d; color: #e6edf3; font-size: 14px; margin: 15px 0; text-align: left; white-space: pre-wrap; word-break: break-word; max-height: 250px; overflow-y: auto; }
-        .btn-copy { width: 100%; padding: 12px; background: #238636; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 14px; margin-top: auto; }
-        .btn-copy:hover { background: #2ea44f; }
+        .modal-content { background-color: #161b22; border: 1px solid #30363d; padding: 20px; border-radius: 16px; max-width: 400px; width: 100%; position: relative; }
+        .prompt-text { background: #0d1117; padding: 12px; border-radius: 8px; border: 1px solid #30363d; color: #e6edf3; font-size: 14px; margin: 15px 0; max-height: 250px; overflow-y: auto; text-align: left; }
+        .btn-copy { width: 100%; padding: 12px; background: #238636; color: white; border: none; border-radius: 8px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -49,74 +48,31 @@
 
         <div class="profile-section">
             <img src="profile.jpg" alt="Profile" class="profile-img">
-            <div class="profile-name">@Hamimbai</div>
+            <div class="profile-name">
+                <a href="https://t.me/xred20" target="_blank" style="text-decoration:none; color:white;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" class="tg-logo" alt="TG">@Hamimbai
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1D7jsTdZXV/?mibextid=wwXIfr" target="_blank" class="social-icon"><svg width="30" height="30" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                <a href="https://www.instagram.com/hamim_xm?igsh=a21vcGZnNTQ2MW9m&utm_source=qr" target="_blank" class="social-icon"><svg width="30" height="30" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.176.052 1.805.25 2.228.416.55.215.945.474 1.358.887.412.413.672.808.887 1.358.166.423.364 1.052.416 2.228.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.052 1.176-.25 1.805-.416 2.228-.215.55-.474.945-.887 1.358-.413.412-.808.672-1.358.887-.423.166-1.052.364-2.228.416-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.176-.052-1.805-.25-2.228-.416-.55-.215-.945-.474-1.358-.887-.412-.413-.672-.808-.887-1.358-.166-.423-.364-1.052-.416-2.228-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.052-1.176.25-1.805.416-2.228.215-.55.474-.945.887-1.358.413-.412.808-.672 1.358-.887.423-.166 1.052-.364 2.228-.416 1.266-.058 1.646-.07 4.85-.07m0-2.163c-3.259 0-3.667.014-4.947.072-1.277.058-2.15.258-2.914.557-.79.306-1.458.718-2.126 1.385-.668.667-1.08 1.335-1.385 2.126-.299.764-.499 1.637-.557 2.914C.014 8.333 0 8.741 0 12c0 3.259.014 3.667.072 4.947.058 1.277.258 2.15.557 2.914.306.79.718 1.458 1.385 2.126.667.668 1.335 1.08 2.126 1.385.764.299 1.637.499 2.914.557C8.333 23.986 8.741 24 12 24c3.259 0 3.667-.014 4.947-.072 1.277-.058 2.15-.258 2.914-.557.79-.306 1.458-.718 2.126-1.385.667-.668 1.08-1.335 1.385-2.126.299-.764.499-1.637.557-2.914C23.986 15.667 24 15.259 24 12c0-3.259-.014-3.667-.072-4.947-.058-1.277-.258-2.15-.557-2.914-.306-.79-.718-1.458-1.385-2.126-.667-.668-1.335-1.08-2.126-1.385-.764-.299-1.637-.499-2.914-.557C15.667.014 15.259 0 12 0z"/><path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+            </div>
         </div>
 
-        <div class="ad-box">
-            <script type="text/javascript">
-                atOptions = { 'key' : 'xxxxxxxxxxxx', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/xxxxxxxxxxxx/invoke.js"></script>
-        </div>
-
-        <div style="text-align: center; margin-bottom: 15px; color: #fff;">
-            <p style="font-weight: bold; margin-bottom: 5px;">Please Join Our Telegram Channel To Get Prompts Easy And Earn Money</p>
+        <div style="text-align: center; margin-bottom: 25px; color: #fff;">
+            <p style="font-weight: bold; margin-bottom: 10px;">Please Join Our Telegram Channel To Get Prompts Easy And Earn Money</p>
             <br>
-            <br>
-            <p style="font-weight: bold; color: #00f2fe;"> আমাদের টেলিগ্রাম চ্যানেলে জয়েন করুন আরো সুবিধা পেতে 👇</p>
+            <p style="font-weight: bold; color: #00f2fe; margin-top: 10px;">আমাদের টেলিগ্রাম চ্যানেলে জয়েন করুন আরো সুবিধা পেতে 👇</p>
         </div>
 
         <a href="https://t.me/xred20" target="_blank" class="btn-telegram">🚀 Join Our Telegram Channel</a>
 
-        <div class="image-showcase">
-            <div class="section-title">✨ AI Photo Magic Case 1</div>
-            <div class="image-grid">
-                <div class="img-box"><h4 class="label-orig">Original</h4><img src="original.jpg" class="display-photo"></div>
-                <div class="img-box"><h4 class="label-edit">AI Edited</h4><img src="aiedited.jpg" class="display-photo border-edit"></div>
-            </div>
-            <button class="btn-prompt" onclick="openModal(`{ &quot;task&quot;: &quot;image_restoration_upscale&quot;, &quot;positive_prompt&quot;: &quot;Restore and enhance the provided image. Preserve original identity, facial structure, proportions and composition. High-fidelity photo restoration, ultra-realistic, natural skin texture, accurate details, professional photographic look. 4K output, sharp but natural focus, modern cinematic lighting, subtle volumetric lighting, professional color grading, depth of field, HDR. Shot on Arri Alexa, raw photo aesthetic, masterpiece.&quot;, &quot;negative_prompt&quot;: &quot;Creative reinterpretation, style change, identity alteration, face reshaping, exaggerated features, cartoonish, painting, illustration, over-sharpening, plastic skin, blur, noise, film grain, jpeg artifacts, distortion, bad anatomy, overexposed, underexposed, washed out colors.&quot;, &quot;parameters&quot;: { &quot;steps&quot;: 30, &quot;cfg_scale&quot;: 6.5, &quot;denoising_strength&quot;: 0.45, &quot;upscaler&quot;: &quot;4x_NMKD_Siax_200k&quot;, &quot;target_resolution&quot;: &quot;4K&quot; } }`)">View Prompts</button>
         </div>
-
-        <div class="image-showcase">
-            <div class="section-title">✨ AI Photo Magic Case 3</div>
-            <div class="image-grid">
-                <div class="img-box"><h4 class="label-orig">Original</h4><img src="hamim1.jpg" class="display-photo"></div>
-                <div class="img-box"><h4 class="label-edit">AI Edited</h4><img src="hamim1edit.jpg" class="display-photo border-edit"></div>
-            </div>
-            <button class="btn-prompt" onclick="openModal(`Case 3 Prompt: 
-Make a Picture Ultrarealistic
-SUBJECT: orang di gambar
-ANGLE: Pengambilan gambar full-body vertikal dari sudut rendah menggunakan kamera iphone secara handheld. Terdapat sedikit distorsi lensa wide-angle khas kamera ponsel. Framing terlihat santai dan sedikit tidak di tengah.
-OUTFIT: jaket stone island. Celana jeans baggy hitam longgar. sepatu Chunky warna putih, rambut seperti difoto berantakan menutupi dahi
-POSE: Bersandar dengan berat tubuh ke bagian kap mobil sport warna putih. Kepala sedikit menunduk dengan satu tangan sebagian menutupi wajah, terlihat santai dan tidak dibuat-buat.
-ENVIRONMENT: Area parkiran mall outdoor pada malam hari yang sepi. Permukaan aspal rapi dengan garis parkir putih yang masih cukup jelas. Lampu-lampu tinggi khas parkiran mall menerangi area dengan pencahayaan buatan yang agak dingin. Di sekitar terlihat beberapa mobil terparkir berjauhan, dengan latar belakang bangunan mall besar.
-LIGHTING: Pencahayaan malam dari lampu parkiran mall yang terang namun tersebar. Bayangan jatuh lembut ke bawah, dengan highlight cukup jelas pada mobil. Ada sedikit noise and grain khas kamera iPhone saat kondisi low-light, serta exposure yang tidak sepenuhnya rata.
-FINAL STYLE: Foto kehidupan nyata yang santai, iPhone, tanpa edit...`)">View Prompts</button>
-        </div>
-
-        <div class="image-showcase">
-            <div class="section-title">✨ AI Photo Magic Case 4</div>
-            <div class="image-grid">
-                <div class="img-box"><h4 class="label-orig">Original</h4><img src="original_4.jpg" class="display-photo"></div>
-                <div class="img-box"><h4 class="label-edit">AI Edited</h4><img src="aiedited_4.jpg" class="display-photo border-edit"></div>
-            </div>
-            <button class="btn-prompt" onclick="openModal('Case 4 Prompt: Sunset beach aesthetic, warm golden hour lighting, cinematic travel photography, 8k.')">View Prompts</button>
-        </div>
-
-        <div class="image-showcase">
-            <div class="section-title">✨ AI Photo Magic Case 2</div>
-            <div class="image-grid">
-                <div class="img-box"><h4 class="label-orig">Original</h4><img src="original.jpg" class="display-photo"></div>
-                <div class="img-box"><h4 class="label-edit">AI Edited</h4><img src="aiedited.jpg" class="display-photo border-edit"></div>
-            </div>
-            <button class="btn-prompt" onclick="openModal('Another prompt example: Cyberpunk city background, glowing lights, anime style aesthetic.')">View Prompts</button>
-        </div>
-    </div>
 
     <div id="promptModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div id="promptText" class="prompt-text">Prompt text will load here...</div>
+            <div id="promptText" class="prompt-text"></div>
             <button id="copyBtn" class="btn-copy" onclick="copyPrompt()">Copy Prompt</button>
         </div>
     </div>
@@ -126,34 +82,11 @@ FINAL STYLE: Foto kehidupan nyata yang santai, iPhone, tanpa edit...`)">View Pro
         const muteBtn = document.getElementById("muteBtn");
         let currentPrompt = "";
 
-        function playMusic() {
-            audio.currentTime = 0; 
-            audio.play().catch(e => console.log("User interaction required"));
-            muteBtn.innerText = "🔊 Mute";
-        }
-        function toggleMute() {
-            if (audio.muted) { audio.muted = false; muteBtn.innerText = "🔊 Mute"; }
-            else { audio.muted = true; muteBtn.innerText = "🔇 Unmute"; }
-        }
-
-        function openModal(promptValue) {
-            playMusic();
-            let adsterraLink = "https://disintegratehesitate.com/x107r2pw?key=f3a4fc16f8e8db72e2190b285d32d113"; 
-            window.open(adsterraLink, '_blank');
-            currentPrompt = promptValue;
-            document.getElementById('promptText').innerText = promptValue;
-            document.getElementById('promptModal').style.display = 'flex';
-        }
-
+        function playMusic() { audio.currentTime = 0; audio.play().catch(e => console.log(e)); muteBtn.innerText = "🔊 Mute"; }
+        function toggleMute() { if (audio.muted) { audio.muted = false; muteBtn.innerText = "🔊 Mute"; } else { audio.muted = true; muteBtn.innerText = "🔇 Unmute"; } }
+        function openModal(promptValue) { playMusic(); window.open("https://disintegratehesitate.com/x107r2pw?key=f3a4fc16f8e8db72e2190b285d32d113", '_blank'); currentPrompt = promptValue; document.getElementById('promptText').innerText = promptValue; document.getElementById('promptModal').style.display = 'flex'; }
         function closeModal() { document.getElementById('promptModal').style.display = 'none'; }
-        
-        function copyPrompt() {
-            navigator.clipboard.writeText(currentPrompt).then(() => {
-                let copyBtn = document.getElementById('copyBtn');
-                copyBtn.innerText = "Copied! ✓";
-                setTimeout(() => copyBtn.innerText = "Copy Prompt", 2000);
-            });
-        }
+        function copyPrompt() { navigator.clipboard.writeText(currentPrompt).then(() => { let copyBtn = document.getElementById('copyBtn'); copyBtn.innerText = "Copied! ✓"; setTimeout(() => copyBtn.innerText = "Copy Prompt", 2000); }); }
     </script>
 </body>
 </html>
