@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Premium AI Hub</title>
+    <style>
+        /* ফিউচারিস্টিক ডার্ক ব্যাকগ্রাউন্ড */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at top, #1a1a3a, #0a0a12);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px
+            padding: 25px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .profile-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            border: 3px solid #00f2fe;
+            box-shadow: 0 0 20px #00f2fe;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin: 5px 0;
+            background: linear-gradient(to right, #00f2fe, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 14px;
+            color: #a0a0c0;
+            margin-bottom: 20px;
+        }
+
+        /* টেলিগ্রাম বাটন */
+        .btn-telegram {
+            display: block;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            margin: 20px 0;
+            border-left: 4px solid #00f2fe;
+        }
+
+        .btn-telegram:hover {
+            background: rgba(0, 242, 254, 0.2);
+            border-color: #00f2fe;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* ব্যানার অ্যাড বক্স */
+        .ad-slot {
+            width: 100%;
+            min-height: 100px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        /* AI ডেমো কার্ড সেকশন */
+        .demo-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 15px;
+            margin-top: 30px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .demo-section h2 {
+            font-size: 18px;
+            color: #00f2fe;
+            margin-top: 0;
+        }
+
+        .image-compare {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .img-box {
+            flex: 1;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .img-box span {
+            font-size: 12px;
+            color: #888;
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* View Prompt প্রিমিয়াম বাটন */
+        .btn-view {
+            width: 100%;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border: none;
+            padding: 12px;
+            color: white;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            transition: box-shadow 0.3s;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+        }
+
+        .btn-view:hover {
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.6);
+        }
+
+        /* 👑 POPUP MODAL STYLES (লুকানো পপ-আপ) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        /* পপ-আপ যখন একটিভ হবে */
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* গ্লাস-মর্ফিজম পপ-আপ বক্স */
+        .modal-box {
+            background: rgba(20, 20, 35, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            width: 90%;
+            max-width: 360px;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-box h3 {
+            margin-top: 0;
+            color: #00f2fe;
+            font-size: 18px;
+        }
+
+        /* প্রম্পট টেক্সট এরিয়া */
+        .prompt-textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 242, 254, 0.3);
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 13px;
+            resize: none;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        /* পপ-আপের বাটনসমূহ */
+        .btn-copy {
+            background: #00f2fe;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        .btn-close {
+            background: transparent;
+            color: #aaa;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 12px;
+        }
+
+        .btn-close:hover {
+            color: #fff;
+            border-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img class="profile-img" src="https://picsum.photos/150" alt="Profile">
+        <h1>WELCOME TO MY HUB</h1>
+        <p>Explore elite AI concepts & grab free prompts!</p>
+
+        <div class="ad-slot">
+            <span style="color:#555; font-size:12px;">Advertisement (Banner 1)</span>
+        </div>
+
+        <a href="https://t.me/Xred20" target="_blank" class="btn-telegram">
+            📢 JOIN OUR TELEGRAM CHANNEL
+        </a>
+
+        <div class="ad-slot">
+            <span style="color:#555; font-size:12px;">Advertisement (Banner 2)</span>
+        </div>
+
+        <div class="demo-section">
+            <h2>🔥 AI Photo Magic Case</h2>
+            
+            <div class="image-compare">
+                <div class="img-box">
+                    <img src="https://picsum.photos/200/300?random=1" alt="Normal Photo">
+                    <span>Original Pic</span>
+                </div>
+                
+                <div class="img-box">
+                    <img src="https://picsum.photos/200/300?random=2" alt="AI Photo">
+                    <span>AI Enhanced Look</span>
+                </div>
+            </div>
+
+            <button class="btn-view" onclick="openModal()">✨ View AI Prompt</button>
+        </div>
+        <div class="ad-slot">
+            <span style="color:#555; font-size:12px;">Advertisement (Banner 3)</span>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="promptModal">
+        <div class="modal-box">
+            <h3>📋 Copy AI Prompt</h3>
+            <textarea class="prompt-textarea" id="myPrompt" rows="4" readonly>Cinematic lighting, cyber-punk style, ultra-detailed 8k avatar, glowing neon accents, sharp focus, octane render --ar 16:9</textarea>
+            
+            <button class="btn-copy" onclick="copyPrompt()">Copy to Clipboard</button>
+            <button class="btn-close" onclick="closeModal()">Close Window</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('promptModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('promptModal').classList.remove('active');
+        }
+
+        function copyPrompt() {
+            var copyText = document.getElementById("myPrompt");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* মোবাইল ডিভাইসের জন্য */
+            navigator.clipboard.writeText(copyText.value);
+            
+            alert("Prompt successfully copied! 🔥");
+            closeModal(); /* কপি হওয়ার পর পপ-আপ বন্ধ হয়ে যাবে */
+        }
+    </script>
+
+</body>
+</html>
