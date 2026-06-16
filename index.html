@@ -10,7 +10,7 @@
         .container { width: 100%; max-width: 480px; text-align: center; padding-bottom: 50px; position: relative; }
         
         /* মিউট বাটন স্টাইল */
-        #muteBtn { position: absolute; top: 10px; right: 0; z-index: 1000; padding: 8px 12px; background: rgba(0, 242, 254, 0.2); color: #00f2fe; border: 1px solid #00f2fe; border-radius: 20px; cursor: pointer; font-size: 12px; }
+        #muteBtn { position: absolute; top: 10px; right: 0; z-index: 1000; padding: 8px 12px; background: rgba(0, 242, 254, 0.1); color: #00f2fe; border: 1px solid #00f2fe; border-radius: 20px; cursor: pointer; font-size: 12px; }
 
         .profile-section { margin-top: 20px; margin-bottom: 25px; }
         .profile-img { width: 90px; height: 90px; border-radius: 50%; border: 2px solid #00f2fe; box-shadow: 0 0 15px rgba(0, 242, 254, 0.3); object-fit: cover; }
@@ -64,18 +64,52 @@
         <div class="image-showcase">
             <div class="section-title">✨ AI Photo Magic Case 1</div>
             <div class="image-grid">
-                <div class="img-box"><h4 class="label-orig">Original</h4><img src="original.jpg" alt="Original Pic" class="display-photo"></div>
-                <div class="img-box"><h4 class="label-edit">AI Edited</h4><img src="aiedited.jpg" alt="Edited Pic" class="display-photo border-edit"></div>
+                <div class="img-box"><h4 class="label-orig">Original</h4><img src="original.jpg" class="display-photo"></div>
+                <div class="img-box"><h4 class="label-edit">AI Edited</h4><img src="aiedited.jpg" class="display-photo border-edit"></div>
             </div>
-            <button class="btn-prompt" onclick="openModal(`{ &quot;task&quot;: &quot;image_restoration_upscale&quot;, &quot;positive_prompt&quot;: &quot;...&quot; }`)">View Prompts</button>
+            <button class="btn-prompt" onclick="openModal(`{ &quot;task&quot;: &quot;image_restoration_upscale&quot;, &quot;positive_prompt&quot;: &quot;Restore and enhance the provided image. Preserve original identity, facial structure, proportions and composition. High-fidelity photo restoration, ultra-realistic, natural skin texture, accurate details, professional photographic look. 4K output, sharp but natural focus, modern cinematic lighting, subtle volumetric lighting, professional color grading, depth of field, HDR. Shot on Arri Alexa, raw photo aesthetic, masterpiece.&quot;, &quot;negative_prompt&quot;: &quot;Creative reinterpretation, style change, identity alteration, face reshaping, exaggerated features, cartoonish, painting, illustration, over-sharpening, plastic skin, blur, noise, film grain, jpeg artifacts, distortion, bad anatomy, overexposed, underexposed, washed out colors.&quot;, &quot;parameters&quot;: { &quot;steps&quot;: 30, &quot;cfg_scale&quot;: 6.5, &quot;denoising_strength&quot;: 0.45, &quot;upscaler&quot;: &quot;4x_NMKD_Siax_200k&quot;, &quot;target_resolution&quot;: &quot;4K&quot; } }`)">View Prompts</button>
         </div>
 
+        <div class="image-showcase">
+            <div class="section-title">✨ AI Photo Magic Case 3</div>
+            <div class="image-grid">
+                <div class="img-box"><h4 class="label-orig">Original</h4><img src="hamim1.jpg" class="display-photo"></div>
+                <div class="img-box"><h4 class="label-edit">AI Edited</h4><img src="hamim1edit.jpg" class="display-photo border-edit"></div>
+            </div>
+            <button class="btn-prompt" onclick="openModal(`Case 3 Prompt: 
+Make a Picture Ultrarealistic
+SUBJECT: orang di gambar
+ANGLE: Pengambilan gambar full-body vertikal dari sudut rendah menggunakan kamera iphone secara handheld. Terdapat sedikit distorsi lensa wide-angle khas kamera ponsel. Framing terlihat santai dan sedikit tidak di tengah.
+OUTFIT: jaket stone island. Celana jeans baggy hitam longgar. sepatu Chunky warna putih, rambut seperti difoto berantakan menutupi dahi
+POSE: Bersandar dengan berat tubuh ke bagian kap mobil sport warna putih. Kepala sedikit menunduk dengan satu tangan sebagian menutupi wajah, terlihat santai dan tidak dibuat-buat.
+ENVIRONMENT: Area parkiran mall outdoor pada malam hari yang sepi. Permukaan aspal rapi dengan garis parkir putih yang masih cukup jelas. Lampu-lampu tinggi khas parkiran mall menerangi area dengan pencahayaan buatan yang agak dingin. Di sekitar terlihat beberapa mobil terparkir berjauhan, dengan latar belakang bangunan mall besar.
+LIGHTING: Pencahayaan malam dari lampu parkiran mall yang terang namun tersebar. Bayangan jatuh lembut ke bawah, dengan highlight cukup jelas pada mobil. Ada sedikit noise and grain khas kamera iPhone saat kondisi low-light, serta exposure yang tidak sepenuhnya rata.
+FINAL STYLE: Foto kehidupan nyata yang santai, iPhone, tanpa edit...`)">View Prompts</button>
         </div>
+
+        <div class="image-showcase">
+            <div class="section-title">✨ AI Photo Magic Case 4</div>
+            <div class="image-grid">
+                <div class="img-box"><h4 class="label-orig">Original</h4><img src="original_4.jpg" class="display-photo"></div>
+                <div class="img-box"><h4 class="label-edit">AI Edited</h4><img src="aiedited_4.jpg" class="display-photo border-edit"></div>
+            </div>
+            <button class="btn-prompt" onclick="openModal('Case 4 Prompt: Sunset beach aesthetic, warm golden hour lighting, cinematic travel photography, 8k.')">View Prompts</button>
+        </div>
+
+        <div class="image-showcase">
+            <div class="section-title">✨ AI Photo Magic Case 2</div>
+            <div class="image-grid">
+                <div class="img-box"><h4 class="label-orig">Original</h4><img src="original.jpg" class="display-photo"></div>
+                <div class="img-box"><h4 class="label-edit">AI Edited</h4><img src="aiedited.jpg" class="display-photo border-edit"></div>
+            </div>
+            <button class="btn-prompt" onclick="openModal('Another prompt example: Cyberpunk city background, glowing lights, anime style aesthetic.')">View Prompts</button>
+        </div>
+    </div>
 
     <div id="promptModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div id="promptText" class="prompt-text"></div>
+            <div id="promptText" class="prompt-text">Prompt text will load here...</div>
             <button id="copyBtn" class="btn-copy" onclick="copyPrompt()">Copy Prompt</button>
         </div>
     </div>
@@ -83,26 +117,22 @@
     <script>
         const audio = document.getElementById("bgMusic");
         const muteBtn = document.getElementById("muteBtn");
+        let currentPrompt = "";
 
+        // মিউজিক ফাংশন
         function playMusic() {
             if (audio.paused) {
-                audio.play().catch(e => console.log("User interaction needed"));
+                audio.play().catch(e => console.log("User interaction required"));
                 muteBtn.innerText = "🔊 Mute";
             }
         }
-
         function toggleMute() {
-            if (audio.muted) {
-                audio.muted = false;
-                muteBtn.innerText = "🔊 Mute";
-            } else {
-                audio.muted = true;
-                muteBtn.innerText = "🔇 Unmute";
-            }
+            if (audio.muted) { audio.muted = false; muteBtn.innerText = "🔊 Mute"; }
+            else { audio.muted = true; muteBtn.innerText = "🔇 Unmute"; }
         }
 
         function openModal(promptValue) {
-            playMusic(); // ইউজার প্রথম ক্লিকেই মিউজিক চালু হবে
+            playMusic();
             let adsterraLink = "https://disintegratehesitate.com/x107r2pw?key=f3a4fc16f8e8db72e2190b285d32d113"; 
             window.open(adsterraLink, '_blank');
             currentPrompt = promptValue;
