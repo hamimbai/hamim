@@ -129,6 +129,8 @@
             background: #00f2fe;
             color: #0d1117;
         }
+        
+        /* ─── POPUP MODAL FIXES ─── */
         .modal {
             display: none; 
             position: fixed; 
@@ -149,7 +151,9 @@
             border-radius: 16px;
             max-width: 400px;
             width: 100%;
-            text-align: center;
+            max-height: 85vh; /* স্ক্রিনের ৮৫% এর বেশি বড় হবে না */
+            display: flex;
+            flex-direction: column;
             position: relative;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
@@ -160,7 +164,9 @@
             color: #aaa;
             font-size: 24px;
             cursor: pointer;
+            z-index: 10;
         }
+        /* প্রম্পট বক্সের স্ক্রলিং ফিক্স */
         .prompt-text {
             background: #0d1117;
             padding: 12px;
@@ -170,12 +176,14 @@
             font-size: 14px;
             margin: 15px 0;
             text-align: left;
-            white-space: pre-wrap; /* নতুন লাইন সুন্দর দেখানোর জন্য */
+            white-space: pre-wrap; 
             word-break: break-word;
+            max-height: 250px; /* প্রম্পট বক্সটি ২৫০ পিক্সেলের বেশি বড় হবে না */
+            overflow-y: auto;  /* বড় প্রম্পট হলে ভেতরে স্ক্রল বার আসবে */
         }
         .btn-copy {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background: #238636;
             color: white;
             border: none;
@@ -183,6 +191,7 @@
             font-weight: bold;
             cursor: pointer;
             font-size: 14px;
+            margin-top: auto; /* বাটন সবসময় নিচের দিকে ফিক্সড থাকবে */
         }
         .btn-copy:hover { background: #2ea44f; }
     </style>
@@ -232,6 +241,7 @@
   } 
 }`)">View Prompts</button>
         </div>
+
         <div class="image-showcase">
             <div class="section-title">✨ AI Photo Magic Case 3</div>
             <div class="image-grid">
@@ -244,15 +254,15 @@
                     <img src="hamim1edit.jpg" alt="Edited Pic" class="display-photo border-edit">
                 </div>
             </div>
-            <button class="btn-prompt" onclick="openModal('Case 3 Prompt: 
+            <button class="btn-prompt" onclick="openModal(`Case 3 Prompt: 
 Make a Picture Ultrarealistic
 SUBJECT: orang di gambar
 ANGLE: Pengambilan gambar full-body vertikal dari sudut rendah menggunakan kamera iphone secara handheld. Terdapat sedikit distorsi lensa wide-angle khas kamera ponsel. Framing terlihat santai dan sedikit tidak di tengah.
 OUTFIT: jaket stone island. Celana jeans baggy hitam longgar. sepatu Chunky warna putih, rambut seperti difoto berantakan menutupi dahi
 POSE: Bersandar dengan berat tubuh ke bagian kap mobil sport warna putih. Kepala sedikit menunduk dengan satu tangan sebagian menutupi wajah, terlihat santai dan tidak dibuat-buat.
 ENVIRONMENT: Area parkiran mall outdoor pada malam hari yang sepi. Permukaan aspal rapi dengan garis parkir putih yang masih cukup jelas. Lampu-lampu tinggi khas parkiran mall menerangi area dengan pencahayaan buatan yang agak dingin. Di sekitar terlihat beberapa mobil terparkir berjauhan, dengan latar belakang bangunan mall besar.
-LIGHTING: Pencahayaan malam dari lampu parkiran mall yang terang namun tersebar. Bayangan jatuh lembut ke bawah, dengan highlight cukup jelas pada mobil. Ada sedikit noise dan grain khas kamera iPhone saat kondisi low-light, serta exposure yang tidak sepenuhnya rata.
-FINAL STYLE: Foto kehidupan nyata yang santai, iPhone, tanpa edit...')">View Prompts</button>
+LIGHTING: Pencahayaan malam dari lampu parkiran mall yang terang namun tersebar. Bayangan jatuh lembut ke bawah, dengan highlight cukup jelas pada mobil. Ada sedikit noise and grain khas kamera iPhone saat kondisi low-light, serta exposure yang tidak sepenuhnya rata.
+FINAL STYLE: Foto kehidupan nyata yang santai, iPhone, tanpa edit...`)">View Prompts</button>
         </div>
 
         <div class="image-showcase">
@@ -297,7 +307,7 @@ FINAL STYLE: Foto kehidupan nyata yang santai, iPhone, tanpa edit...')">View Pro
     <div id="promptModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 style="color: #00f2fe; margin-bottom: 10px;">AI Prompt Code</h3>
+            <h3 style="color: #00f2fe; margin-bottom: 5px;">AI Prompt Code</h3>
             <p style="font-size: 12px; color: #aaa;">Copy the prompt below to use it anywhere.</p>
             <div id="promptText" class="prompt-text">Prompt text will load here...</div>
             <button id="copyBtn" class="btn-copy" onclick="copyPrompt()">Copy Prompt</button>
