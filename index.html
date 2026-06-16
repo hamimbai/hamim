@@ -18,7 +18,6 @@
             flex-direction: column;
             align-items: center;
             padding: 20px;
-            /* scrollable করার জন্য min-height দেওয়া হয়েছে এবং overflow স্বাভাবিক রাখা হয়েছে */
             min-height: 100vh;
             overflow-y: auto; 
         }
@@ -26,7 +25,7 @@
             width: 100%;
             max-width: 480px;
             text-align: center;
-            padding-bottom: 50px; /* নিচে যাতে স্ক্রল করার জায়গা থাকে */
+            padding-bottom: 50px;
         }
         .profile-section {
             margin-top: 20px;
@@ -46,7 +45,6 @@
             margin-top: 10px;
             color: #fff;
         }
-        /* Ad Placement Styling */
         .ad-box {
             width: 100%;
             margin: 20px 0;
@@ -55,7 +53,6 @@
             justify-content: center;
             align-items: center;
         }
-        /* Telegram Button */
         .btn-telegram {
             display: block;
             width: 100%;
@@ -73,13 +70,12 @@
         .btn-telegram:active {
             transform: scale(0.98);
         }
-        /* Image Section (Pashapashi Layout) */
         .image-showcase {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             padding: 15px;
-            margin-top: 25px; /* প্রতিটি বক্সের মাঝে গ্যাপ */
+            margin-top: 25px;
         }
         .section-title {
             font-size: 16px;
@@ -116,7 +112,6 @@
             border: 1.5px solid #00f2fe;
             box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
         }
-        /* View Prompt Button */
         .btn-prompt {
             display: inline-block;
             margin-top: 15px;
@@ -134,7 +129,6 @@
             background: #00f2fe;
             color: #0d1117;
         }
-        /* Popup Modal Styling */
         .modal {
             display: none; 
             position: fixed; 
@@ -176,6 +170,7 @@
             font-size: 14px;
             margin: 15px 0;
             text-align: left;
+            white-space: pre-wrap; /* নতুন লাইন সুন্দর দেখানোর জন্য */
             word-break: break-word;
         }
         .btn-copy {
@@ -200,58 +195,59 @@
             <img src="profile.jpg" alt="Profile" class="profile-img">
             <div class="profile-name">@Hamimbai</div>
         </div>
-<script src="https://pl29769823.effectivecpmnetwork.com/cf/da/b4/cfdab49083f70f3604f0c6249d5f99c6.js"></script>
 
         <div class="ad-box">
             <script type="text/javascript">
                 atOptions = { 'key' : 'xxxxxxxxxxxx', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
             </script>
             <script type="text/javascript" src="//www.highperformanceformat.com/xxxxxxxxxxxx/invoke.js"></script>
-            </div>
+        </div>
 
         <a href="https://t.me/xred20" target="_blank" class="btn-telegram">
             🚀 Join Our Telegram Channel
         </a>
 
-
         <div class="image-showcase">
             <div class="section-title">✨ AI Photo Magic Case 1</div>
-            
             <div class="image-grid">
                 <div class="img-box">
                     <h4 class="label-orig">Original</h4>
                     <img src="original.jpg" alt="Original Pic" class="display-photo">
                 </div>
-                
                 <div class="img-box">
                     <h4 class="label-edit">AI Edited</h4>
                     <img src="aiedited.jpg" alt="Edited Pic" class="display-photo border-edit">
                 </div>
             </div>
-
-            <button class="btn-prompt" onclick="openModal('{ "task": "image_restoration_upscale", "positive_prompt":
-"Restore and enhance the provided image. Preserve original identity, facial structure, proportions and composition. High-fidelity photo restoration, ultra-realistic, natural skin texture, accurate details, professional photographic look. 4K output, sharp but natural focus, modern cinematic lighting, subtle volumetric lighting, professional color grading, depth of field, HDR. Shot on Arri Alexa, raw photo aesthetic, masterpiece.",
-"negative_prompt": "Creative reinterpretation, style change, identity alteration, face reshaping, exaggerated features, cartoonish, painting, illustration, over-sharpening, plastic skin, blur, noise, film grain, jpeg artifacts, distortion, bad anatomy, overexposed, underexposed, washed out colors.", "parameters":
-{ "steps": 30, "cfg_scale": 6.5, "denoising_strength": 0.45,
-"upscaler": "4x_NMKD_Siax_200k", "target_resolution": "4K" } }.')">View Prompts</button>
+            <button class="btn-prompt" onclick="openModal(`{ 
+  &quot;task&quot;: &quot;image_restoration_upscale&quot;, 
+  &quot;positive_prompt&quot;: &quot;Restore and enhance the provided image. Preserve original identity, facial structure, proportions and composition. High-fidelity photo restoration, ultra-realistic, natural skin texture, accurate details, professional photographic look. 4K output, sharp but natural focus, modern cinematic lighting, subtle volumetric lighting, professional color grading, depth of field, HDR. Shot on Arri Alexa, raw photo aesthetic, masterpiece.&quot;,
+  &quot;negative_prompt&quot;: &quot;Creative reinterpretation, style change, identity alteration, face reshaping, exaggerated features, cartoonish, painting, illustration, over-sharpening, plastic skin, blur, noise, film grain, jpeg artifacts, distortion, bad anatomy, overexposed, underexposed, washed out colors.&quot;, 
+  &quot;parameters&quot;: { 
+    &quot;steps&quot;: 30, 
+    &quot;cfg_scale&quot;: 6.5, 
+    &quot;denoising_strength&quot;: 0.45,
+    &quot;upscaler&quot;: &quot;4x_NMKD_Siax_200k&quot;, 
+    &quot;target_resolution&quot;: &quot;4K&quot; 
+  } 
+}`)">View Prompts</button>
         </div>
+
         <div class="image-showcase">
             <div class="section-title">✨ AI Photo Magic Case 2</div>
-            
             <div class="image-grid">
                 <div class="img-box">
                     <h4 class="label-orig">Original</h4>
                     <img src="original.jpg" alt="Original Pic" class="display-photo">
                 </div>
-                
                 <div class="img-box">
                     <h4 class="label-edit">AI Edited</h4>
                     <img src="aiedited.jpg" alt="Edited Pic" class="display-photo border-edit">
                 </div>
             </div>
-
             <button class="btn-prompt" onclick="openModal('Another prompt example: Cyberpunk city background, glowing lights, anime style aesthetic.')">View Prompts</button>
         </div>
+
         <div class="ad-box">
             <script type="text/javascript">
                 atOptions = { 'key' : 'xxxxxxxxxxxx', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
@@ -266,9 +262,7 @@
             <span class="close-btn" onclick="closeModal()">&times;</span>
             <h3 style="color: #00f2fe; margin-bottom: 10px;">AI Prompt Code</h3>
             <p style="font-size: 12px; color: #aaa;">Copy the prompt below to use it anywhere.</p>
-            
             <div id="promptText" class="prompt-text">Prompt text will load here...</div>
-            
             <button id="copyBtn" class="btn-copy" onclick="copyPrompt()">Copy Prompt</button>
         </div>
     </div>
@@ -277,25 +271,20 @@
         let currentPrompt = "";
 
         function openModal(promptValue) {
-    // 👇 Apnar Adsterra theke pawa link ti ekhane bshiye dewa holo 👇
-    let adsterraLink = "https://disintegratehesitate.com/x107r2pw?key=f3a4fc16f8e8db72e2190b285d32d113"; 
-    window.open(adsterraLink, '_blank');
+            let adsterraLink = "https://disintegratehesitate.com/x107r2pw?key=f3a4fc16f8e8db72e2190b285d32d113"; 
+            window.open(adsterraLink, '_blank');
 
-    currentPrompt = promptValue;
-    document.getElementById('promptText').innerText = promptValue;
-    document.getElementById('promptModal').style.display = 'flex';
-    document.getElementById('copyBtn').innerText = "Copy Prompt";
-    document.getElementById('copyBtn').style.background = "#238636";
-}
-
-
-
+            currentPrompt = promptValue;
+            document.getElementById('promptText').innerText = promptValue;
+            document.getElementById('promptModal').style.display = 'flex';
+            document.getElementById('copyBtn').innerText = "Copy Prompt";
+            document.getElementById('copyBtn').style.background = "#238636";
+        }
 
         function closeModal() {
             document.getElementById('promptModal').style.display = 'none';
         }
 
-        // পপআপের বাইরে ক্লিক করলে পপআপ বন্ধ হয়ে যাবে
         window.onclick = function(event) {
             let modal = document.getElementById('promptModal');
             if (event.target == modal) {
