@@ -18,12 +18,15 @@
             flex-direction: column;
             align-items: center;
             padding: 20px;
+            /* scrollable করার জন্য min-height দেওয়া হয়েছে এবং overflow স্বাভাবিক রাখা হয়েছে */
             min-height: 100vh;
+            overflow-y: auto; 
         }
         .container {
             width: 100%;
             max-width: 480px;
             text-align: center;
+            padding-bottom: 50px; /* নিচে যাতে স্ক্রল করার জায়গা থাকে */
         }
         .profile-section {
             margin-top: 20px;
@@ -76,7 +79,7 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             padding: 15px;
-            margin-top: 10px;
+            margin-top: 25px; /* প্রতিটি বক্সের মাঝে গ্যাপ */
         }
         .section-title {
             font-size: 16px;
@@ -113,6 +116,80 @@
             border: 1.5px solid #00f2fe;
             box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
         }
+        /* View Prompt Button */
+        .btn-prompt {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: rgba(0, 242, 254, 0.1);
+            color: #00f2fe;
+            border: 1px solid #00f2fe;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .btn-prompt:hover {
+            background: #00f2fe;
+            color: #0d1117;
+        }
+        /* Popup Modal Styling */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 999; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background-color: #161b22;
+            border: 1px solid #30363d;
+            padding: 20px;
+            border-radius: 16px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        .close-btn {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            color: #aaa;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .prompt-text {
+            background: #0d1117;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            color: #e6edf3;
+            font-size: 14px;
+            margin: 15px 0;
+            text-align: left;
+            word-break: break-word;
+        }
+        .btn-copy {
+            width: 100%;
+            padding: 10px;
+            background: #238636;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-copy:hover { background: #2ea44f; }
     </style>
 </head>
 <body>
@@ -129,15 +206,15 @@
                 atOptions = { 'key' : 'xxxxxxxxxxxx', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
             </script>
             <script type="text/javascript" src="//www.highperformanceformat.com/xxxxxxxxxxxx/invoke.js"></script>
-            
             </div>
 
         <a href="https://t.me/xred20" target="_blank" class="btn-telegram">
             🚀 Join Our Telegram Channel
         </a>
 
+
         <div class="image-showcase">
-            <div class="section-title">✨ AI Photo Magic Case</div>
+            <div class="section-title">✨ AI Photo Magic Case 1</div>
             
             <div class="image-grid">
                 <div class="img-box">
@@ -150,9 +227,81 @@
                     <img src="aiedited.jpg" alt="Edited Pic" class="display-photo border-edit">
                 </div>
             </div>
+
+            <button class="btn-prompt" onclick="openModal('A cinematic, highly detailed 8k cybernetic boy portrait, neon glow, cyberpunk style, hyper-realistic.')">View Prompts</button>
+        </div>
+        <div class="image-showcase">
+            <div class="section-title">✨ AI Photo Magic Case 2</div>
+            
+            <div class="image-grid">
+                <div class="img-box">
+                    <h4 class="label-orig">Original</h4>
+                    <img src="original.jpg" alt="Original Pic" class="display-photo">
+                </div>
+                
+                <div class="img-box">
+                    <h4 class="label-edit">AI Edited</h4>
+                    <img src="aiedited.jpg" alt="Edited Pic" class="display-photo border-edit">
+                </div>
+            </div>
+
+            <button class="btn-prompt" onclick="openModal('Another prompt example: Cyberpunk city background, glowing lights, anime style aesthetic.')">View Prompts</button>
+        </div>
+        <div class="ad-box">
+            <script type="text/javascript">
+                atOptions = { 'key' : 'xxxxxxxxxxxx', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/xxxxxxxxxxxx/invoke.js"></script>
         </div>
 
     </div>
+
+    <div id="promptModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 style="color: #00f2fe; margin-bottom: 10px;">AI Prompt Code</h3>
+            <p style="font-size: 12px; color: #aaa;">Copy the prompt below to use it anywhere.</p>
+            
+            <div id="promptText" class="prompt-text">Prompt text will load here...</div>
+            
+            <button id="copyBtn" class="btn-copy" onclick="copyPrompt()">Copy Prompt</button>
+        </div>
+    </div>
+
+    <script>
+        let currentPrompt = "";
+
+        function openModal(promptValue) {
+            currentPrompt = promptValue;
+            document.getElementById('promptText').innerText = promptValue;
+            document.getElementById('promptModal').style.display = 'flex';
+            document.getElementById('copyBtn').innerText = "Copy Prompt";
+            document.getElementById('copyBtn').style.background = "#238636";
+        }
+
+        function closeModal() {
+            document.getElementById('promptModal').style.display = 'none';
+        }
+
+        // পপআপের বাইরে ক্লিক করলে পপআপ বন্ধ হয়ে যাবে
+        window.onclick = function(event) {
+            let modal = document.getElementById('promptModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        function copyPrompt() {
+            navigator.clipboard.writeText(currentPrompt).then(() => {
+                let copyBtn = document.getElementById('copyBtn');
+                copyBtn.innerText = "Copied! ✓";
+                copyBtn.style.background = "#00f2fe";
+                copyBtn.style.color = "#0d1117";
+            }).catch(err => {
+                alert('Failed to copy text: ', err);
+            });
+        }
+    </script>
 
 </body>
 </html>
