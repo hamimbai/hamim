@@ -40,7 +40,7 @@
 </head>
 <body>
 
-    <audio id="bgMusic" loop>
+    <audio id="bgMusic">
         <source src="site.mp3" type="audio/mpeg">
     </audio>
 
@@ -121,10 +121,11 @@ FINAL STYLE: Foto kehidupan nyata yang santai, iPhone, tanpa edit...`)">View Pro
 
         // মিউজিক ফাংশন
         function playMusic() {
-            if (audio.paused) {
-                audio.play().catch(e => console.log("User interaction required"));
-                muteBtn.innerText = "🔊 Mute";
-            }
+    audio.currentTime = 0; // মিউজিক সবসময় শুরু থেকে বাজবে
+    audio.play().catch(e => console.log("User interaction required"));
+    muteBtn.innerText = "🔊 Mute";
+}
+
         }
         function toggleMute() {
             if (audio.muted) { audio.muted = false; muteBtn.innerText = "🔊 Mute"; }
