@@ -273,12 +273,17 @@
         let currentPrompt = "";
 
         function openModal(promptValue) {
+    // 👇 Apnar Adsterra theke pawa link ti ekhane bshiye dewa holo 👇
+    let adsterraLink = "https://disintegratehesitate.com/x107r2pw?key=f3a4fc16f8e8db72e2190b285d32d113"; 
+    window.open(adsterraLink, '_blank');
+
     currentPrompt = promptValue;
     document.getElementById('promptText').innerText = promptValue;
     document.getElementById('promptModal').style.display = 'flex';
     document.getElementById('copyBtn').innerText = "Copy Prompt";
     document.getElementById('copyBtn').style.background = "#238636";
 }
+
 
 
 
