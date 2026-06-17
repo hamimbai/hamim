@@ -9,15 +9,20 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { background-color: #0d1117; color: #ffffff; font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; padding: 15px; min-height: 100vh; }
-        .container { width: 100%; max-width: 400px; text-align: center; padding-bottom: 50px; }
+        .container { width: 100%; max-width: 400px; text-align: center; padding-bottom: 50px; position: relative; }
+        
+        #muteBtn { position: absolute; top: 10px; right: 0; z-index: 1000; padding: 6px 12px; background: rgba(0, 242, 254, 0.1); color: #00f2fe; border: 1px solid #00f2fe; border-radius: 20px; cursor: pointer; font-size: 11px; }
+
         .profile-section { margin-top: 10px; margin-bottom: 20px; }
         .profile-img { width: 70px; height: 70px; border-radius: 50%; border: 2px solid #00f2fe; object-fit: cover; }
         .profile-name { font-size: 18px; font-weight: 600; margin-top: 8px; }
+        
         .image-showcase { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 20px; padding: 12px; margin-top: 20px; }
         .section-title { font-size: 13px; color: #00f2fe; margin-bottom: 10px; }
         img-comparison-slider { width: 100%; border-radius: 16px; overflow: hidden; aspect-ratio: 1 / 1; }
         img-comparison-slider img { width: 100%; height: 100%; object-fit: cover; }
         .btn-prompt { width: 100%; margin-top: 12px; padding: 10px; background: #fff; color: #000; border: none; border-radius: 10px; cursor: pointer; font-weight: 600; }
+        
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 999; align-items: center; justify-content: center; padding: 20px; }
         .modal-content { background-color: #111; padding: 20px; border-radius: 20px; width: 100%; max-width: 350px; border: 1px solid #333; }
         .btn-copy { width: 100%; padding: 10px; background: #238636; color: white; border: none; border-radius: 8px; cursor: pointer; margin-top: 15px; }
@@ -25,7 +30,11 @@
 </head>
 <body>
 
+<audio id="bgMusic" loop><source src="site.mp3" type="audio/mpeg"></audio>
+
 <div class="container">
+    <button id="muteBtn" onclick="toggleMute()">🔇 Unmute</button>
+
     <div class="profile-section">
         <img src="profile.jpg" class="profile-img">
         <div class="profile-name">@Hamimbai</div>
@@ -78,15 +87,35 @@
 </div>
 
 <script>
+    const audio = document.getElementById("bgMusic");
+    const muteBtn = document.getElementById("muteBtn");
+
+    function toggleMute() {
+        if (audio.paused || audio.muted) { 
+            audio.play().catch(e => console.log(e)); 
+            audio.muted = false; 
+            muteBtn.innerText = "🔊 Mute"; 
+        } else { 
+            audio.muted = true; 
+            muteBtn.innerText = "🔇 Unmute"; 
+        }
+    }
+
     function openModal(p) {
+        // মিউজিক চালু করা এবং অ্যাড লিঙ্কে পাঠানো
+        audio.play().catch(e => console.log(e));
+        muteBtn.innerText = "🔊 Mute";
         window.open("https://disintegratehesitate.com/x107r2pw?key=f3a4fc16f8e8db72e2190b285d32d113", '_blank');
         document.getElementById('promptText').innerText = p;
         document.getElementById('promptModal').style.display = 'flex';
     }
+
     function closeModal() { document.getElementById('promptModal').style.display = 'none'; }
+    
     function copyPrompt() {
         navigator.clipboard.writeText(document.getElementById('promptText').innerText);
         document.getElementById('copyBtnMain').innerText = "Copied! ✓";
+        setTimeout(() => { document.getElementById('copyBtnMain').innerText = "Copy Prompt"; }, 2000);
     }
 </script>
 </body>
